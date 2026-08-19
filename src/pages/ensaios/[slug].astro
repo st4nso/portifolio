@@ -1,0 +1,377 @@
+---
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+  const ensaios = [
+    {
+      slug: 'exp',
+      title: 'EXP',
+      description: `A ansiedade, a dependência, a compulsão por conexão e a sensação de ausência diante do desligamento tecnológico são traduzidas visualmente como sinais clínicos. O corpo fotografado torna-se um corpo monitorado e mediado por dispositivos.`,
+      folder: 'exp',
+      credits: [
+        { label: 'DIREÇÃO DE ARTE', value: 'Lucas Stanso' },
+        { label: 'FOTOGRAFIA', value: 'Lucas Stanso e Nuriê Ross' },
+        { label: 'STYLING', value: 'Lucas Stanso e Gika Corbane' },
+        { label: 'BEAUTY', value: 'Mimi de Maria' },
+        { label: 'MODELO', value: 'Blue Sanders e Helena Bohn' },
+        { label: 'ILUMINAÇÃO', value: 'Nuriê Ross' }
+      ]
+    },
+    {
+      slug: 'plt',
+      title: '.PLT',
+      description: `O título faz referência aos arquivos utilizados em processos de plotagem e impressão de moldes, aproximando o editorial da técnica industrial e projetual. Nesse contexto, a roupa deixa de ser compreendida apenas como objeto de consumo ou peça finalizada e passa a ser apresentada como estrutura, protótipo e linguagem em construção. As peças existem em estado provisório: são frágeis, instáveis e inacabadas, mas justamente por isso tornam visível a materialidade do processo.`,
+      folder: 'plt',
+      credits: [
+        { label: 'FOTOGRAFIA', value: 'Lucas Stanso' },
+        { label: 'DIR. DE ARTE', value: 'Lucas Stanso' },
+        { label: 'STYLING', value: 'Lucas Stanso' },
+        { label: 'AST DE STYLING', value: 'Renato Almeida' },
+        { label: 'BEAUTY', value: 'Mimi de Maria' },
+        { label: 'HAIR', value: 'Malu Gomes' },
+        { label: 'MODELO', value: 'Julia Maestri' }
+      ]
+    },
+    {
+      slug: 'ad',
+      title: 'AD',
+      description: ``,
+      folder: 'ad',
+      credits: [
+        { label: 'DIREÇÃO', value: 'Lucas Stanso' },
+        { label: 'FOTOGRAFIA', value: 'Lucas Stanso, Gabi Scibor, Nuriê Ross' },
+        { label: 'BOLSA', value: 'Laura Menezes' },
+        { label: 'SAPATO', value: 'Lucca Reboredo' }
+      ]
+    },
+    {
+      slug: 'irl',
+      title: 'IRL',
+      description: `In real life, IRL. parte da ideia de acompanhar alguém sem que ele perceba. Inspirado pela linguagem das lives, dos registros espontâneos da internet e pela sensação constante de vigilância presente nas redes sociais, o editorial constrói uma narrativa em que o fotógrafo assume a posição de um observador anônimo, quase obsessivo, seguindo os movimentos de um rapaz completamente absorvido pelo celular.`,
+      folder: 'irl',
+      credits: [
+        { label: 'FOTOGRAFIA', value: 'Lucas Stanso' },
+        { label: 'STYLING', value: 'Lucas Stanso' },
+        { label: 'MODELO', value: 'Kim Terra' }
+      ]
+    },
+    {
+      slug: 'cristal',
+      title: 'CRySTALINE',
+      description: `Editorial desenvolvido para a matéria "Styling e Imagem de Moda I" a partir da música MC Brinquedo vs Björk & Omar Souleyman - Pau na Crystalline, as fotos utilizam apenas de luz natural.`,
+      folder: 'cristal',
+      credits: [
+        { label: 'FOTOGRAFIA', value: 'Lucas Stanso' },
+        { label: 'DIREÇÃO', value: 'Malu Gomes' },
+        { label: 'STYLING', value: 'Mauricio Mesquita e Malu Abdala' },
+        { label: 'MODELO', value: 'Malu e Ibiã' }
+      ]
+    },
+    {
+      slug: 'palato',
+      title: 'PALATO',
+      description: `Editorial de exploração visual em moda do que podem ser os sabores. Cada look um sabor. Fotos realizadas para revista acadêmica Dish.`,
+      folder: 'palato',
+      credits: [
+        { label: 'FOTOGRAFIA', value: 'Lucas Stanso' },
+        { label: 'DIREÇÃO', value: 'Lukas Pereira e Malu Abdala' },
+        { label: 'STYLING', value: 'Lukas Pereira e Malu Abdala' },
+        { label: 'MODELO', value: 'Gabriel e Giulia' }
+      ]
+    },
+    {
+      slug: 'sentinel',
+      title: 'SENTINEL@404',
+      description: `Inspirado no anime "Lain Series" o editorial pensado por Gika Corbane reflete sobre linguagens digitais e ciberespaços. Editorial desenvolvido para revista de TCC no bacharelado em Moda de Gika Corbane em 2025.`,
+      folder: 'sentinel',
+      credits: [
+        { label: 'FOTOGRAFIA', value: 'Lucas Stanso' },
+        { label: 'DIREÇÃO', value: 'Gika Corbane e Pedro Fanazaro' },
+        { label: 'STYLING', value: 'Gika Corbane' },
+        { label: 'MODELO', value: 'Gika Corbane' },
+        { label: 'BEAUTY', value: 'Laura Menezes' },
+        { label: 'CENOGRAFIA', value: 'Nuriê Ross' },
+        { label: 'VÍDEO', value: 'Pedro Fanazaro' }
+      ]
+    },
+    {
+      slug: 'radio',
+      title: 'RADIO',
+      description: `Fotos backstage de desfile da marca Radio Club em 2022.`,
+      folder: 'radio_club',
+      credits: [
+        { label: 'FOTOGRAFIA', value: 'Lucas Stanso' }, 
+        { label: 'MARCA', value: 'RADIO CLUB' }, 
+        { label: 'ESTILISTA', value: 'Gabriel Berloffa' },
+        { label: 'STYLING', value: 'Phel Nunes' }
+      ]
+    },
+    {
+      slug: 'smoke',
+      title: 'DJ SMOKE',
+      description: `Fotos em estúdio para mídia kit de Dj Smoke.`,
+      folder: 'smoke',
+      credits: [
+        { label: 'FOTOGRAFIA', value: 'Lucas Stanso' }, 
+        { label: 'MODELO', value: 'DJ Smoke' }, 
+        { label: 'PROD DE MODA', value: 'Renato Almeida' },
+        { label: 'STYLING', value: 'Lucas Stanso' }
+      ]
+    },
+    {
+      slug: 'sem-doc',
+      title: 'SEM DOC',
+      description: `Fotos promocionais do single Sem Doc - Viken.`,
+      folder: 'sem doc',
+      credits: [
+        { label: 'FOTOGRAFIA', value: 'Lucas Stanso' }, 
+        { label: 'MODELO', value: 'Viken e Isla ' }, 
+        { label: 'PROD EXECUTIVA', value: 'Renato Almeida' },
+        { label: 'STYLING', value: 'Renato Almeida' }
+      ]
+    }
+  ];
+
+  const todasImagens = import.meta.glob('/src/assets/ensaios/**/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP}', { eager: true });
+
+  return ensaios.map((ensaio) => {
+    const fotos = Object.entries(todasImagens)
+      .filter(([path]) => {
+        const pathMinusculo = path.toLowerCase();
+        const pastaMinuscula = ensaio.folder.toLowerCase();
+        return pathMinusculo.includes(`/src/assets/ensaios/${pastaMinuscula}/`);
+      })
+      .map(([_, img]: [string, any]) => img.default);
+
+    return {
+      params: { slug: ensaio.slug },
+      props: { ensaio, fotos }
+    };
+  });
+}
+
+const { ensaio, fotos } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{ensaio.title} — LUCAS STANSO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <a href="/" class="back-link">← VOLTAR</a>
+    <h1 class="brand"><a href="/">LUCAS STANSO</a></h1>
+  </header>
+
+  <main class="container">
+    <section class="project-info">
+      <h2 class="title">{ensaio.title}</h2>
+      {ensaio.description && <p class="description">{ensaio.description}</p>}
+
+      <div class="credits">
+        {ensaio.credits.map((credit) => (
+          <div class="credit-item">
+            <strong>{credit.label}</strong>
+            <p>{credit.value}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="essay-gallery">
+      {fotos.map((imagem) => (
+        <div class="photo-frame">
+          <Image 
+            src={imagem} 
+            alt={`Foto ${ensaio.title}`} 
+            loading="lazy" 
+            decoding="async"
+            class="zoomable-img"
+          />
+        </div>
+      ))}
+    </section>
+  </main>
+
+  <div id="lightbox" class="lightbox">
+    <img id="lightbox-img" src="" alt="Imagem Ampliada" />
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const images = document.querySelectorAll('.zoomable-img');
+
+    images.forEach((img) => {
+      img.addEventListener('click', () => {
+        const target = img as HTMLImageElement;
+        lightboxImg.src = target.src;
+        lightbox?.classList.add('active');
+      });
+    });
+
+    lightbox?.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+  </script>
+
+</body>
+</html>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  body {
+    background-color: #121212;
+    color: #f0f0f0;
+    font-family: 'Inter', sans-serif !important;
+    padding: 2rem;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+  }
+
+  .back-link, .brand a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .project-info {
+    background-color: #121212;
+    color: #f0f0f0;
+    padding: 1.5rem 0;
+  }
+
+  .title {
+    font-size: 2rem;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .description {
+    color: #aaaaaa;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .credits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem 1rem;
+    border-top: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
+    padding: 1.5rem 0;
+    margin-bottom: 3rem;
+  }
+
+  .credit-item strong {
+    display: block;
+    font-size: 0.7rem;
+    color: #888888;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .credit-item p {
+    font-size: 0.85rem;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  .essay-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .photo-frame {
+    background-color: transparent;
+    padding: 0;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .photo-frame img {
+    width: auto;
+    max-width: 100%;
+    max-height: 85vh;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: opacity 0.2s ease;
+  }
+
+  .photo-frame img:hover {
+    opacity: 0.9;
+  }
+
+  .lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(18, 18, 18, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    cursor: zoom-out;
+    padding: 1rem;
+  }
+
+  .lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      padding: 1.2rem;
+    }
+
+    .credits {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

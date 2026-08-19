@@ -1,0 +1,358 @@
+---
+import { Image } from 'astro:assets';
+
+const editoriais = [
+  { slug: 'exp', title: 'EXP', category: 'EDITORIAL', folder: 'EXP' },
+  { slug: 'plt', title: '.PLT', category: 'EDITORIAL', folder: 'plt' },
+  { slug: 'ad', title: 'AD', category: 'EDITORIAL', folder: 'ad' },
+  { slug: 'irl', title: 'IRL', category: 'EDITORIAL', folder: 'irl' },
+  { slug: 'cristal', title: 'CRySTALINE', category: 'EDITORIAL', folder: 'cristal' },
+  { slug: 'palato', title: 'PALATO', category: 'EDITORIAL', folder: 'palato' },
+  { slug: 'sentinel', title: 'SENTINEL@404', category: 'EDITORIAL', folder: 'sentinel' },
+  { slug: 'radio', title: 'RADIO CLUB', category: 'BACKSTAGE', folder: 'radio_club' },
+  { slug: 'smoke', title: 'DJ SMOKE', category: 'RETRATOS/MÍDIA KIT', folder: 'smoke' },
+  { slug: 'sem-doc', title: 'SEM DOC', category: 'EDITORIAL', folder: 'sem doc' },
+];
+
+const imagens = import.meta.glob('/src/assets/ensaios/**/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP}', { eager: true });
+
+const listaEditoriais = editoriais.map((item) => {
+  const capa = Object.entries(imagens).find(([path]) => {
+    const pathMinusculo = path.toLowerCase();
+    const pastaMinuscula = item.folder.toLowerCase();
+    return pathMinusculo.includes(`/src/assets/ensaios/${pastaMinuscula}/`);
+  });
+
+  return {
+    ...item,
+    capaImg: capa ? (capa[1] as any).default : null
+  };
+});
+---
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUCAS STANSO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="brand"><a href="/">LUCAS STANSO</a></h1>
+    <nav class="nav">
+      <a href="/">WORK</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- GALERIA DE TRABALHOS -->
+    <div class="gallery">
+      {listaEditoriais.map((item) => (
+        <a href={`/ensaios/${item.slug}`} class="card">
+          <div class="image-box">
+            {item.capaImg && (
+              <Image src={item.capaImg} alt={item.title} loading="lazy" />
+            )}
+          </div>
+          <div class="card-info">
+            <h2>{item.title}</h2>
+            <span>{item.category}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- SEÇÃO ABOUT -->
+    <section id="about" class="about-section">
+      <div class="about-grid">
+        <div class="about-bio">
+          <h2>ABOUT</h2>
+          <p>
+            Sou Lucas dos Santos, fotógrafo e designer de moda, com interesse em direção de arte e criação de imagem de moda.
+          </p>
+          <p>
+            Atuo em diferentes etapas do processo fotográfico, desde a produção e organização dos ensaios até a seleção e pós-produção das imagens. Sempre buscando unir técnicas com a direção visual em cada projeto e assim explorando as variadas possibilidades de expressão através da imagem.
+          </p>
+          <p>
+            Tenho especial interesse por trabalhos que envolvem moda e construção de narrativas visuais. Gosto de desenvolver imagens com atenção aos detalhes, buscando compreender a proposta de cada projeto e encontrar a melhor forma de traduzi-la visualmente.
+          </p>
+        </div>
+
+        <div class="about-services">
+          <h3>SERVICES</h3>
+          <ul>
+            <li>Direção de Arte</li>
+            <li>Fotografia Editorial & Moda</li>
+            <li>Retratos & Mídia Kit</li>
+            <li>Cobertura Backstage</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO CONTACT -->
+    <section id="contact" class="contact-section">
+      <h3>CONTACT</h3>
+      <div class="contact-links">
+        <div class="contact-item">
+          <span>INSTAGRAM</span>
+          <a href="https://instagram.com/stanso__" target="_blank" rel="noopener noreferrer">@stanso__</a>
+        </div>
+        <div class="contact-item">
+          <span>EMAIL</span>
+          <a href="mailto:st4nso@gmail.com">st4nsos@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  body {
+    background-color: #121212;
+    color: #f0f0f0;
+    font-family: 'Inter', sans-serif !important;
+    padding: 2.5rem;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 4rem auto;
+  }
+
+  .brand a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+  }
+
+  .nav a {
+    color: #888888;
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav a:hover {
+    color: #ffffff;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* GALERIA */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 3rem;
+  }
+
+  .card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .image-box {
+    background: #121212 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    overflow: hidden;
+  }
+
+  .image-box img {
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
+    object-fit: cover;
+    display: block;
+    border: none !important;
+    outline: none !important;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+
+  .card:hover .image-box img {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+
+  .card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .card-info h2 {
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+  }
+
+  .card-info span {
+    color: #888888;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+  }
+
+  /* SEÇÃO ABOUT */
+  .about-section {
+    margin-top: 8rem;
+    padding-top: 5rem;
+    border-top: 1px solid #2a2a2a;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+  }
+
+  .about-bio h2 {
+    font-size: 1.8rem;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-bio p {
+    color: #cccccc;
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-services h3 {
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: #888888;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-services ul {
+    list-style: none;
+  }
+
+  .about-services li {
+    font-size: 0.9rem;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #222222;
+  }
+
+  /* SEÇÃO CONTACT */
+  .contact-section {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid #2a2a2a;
+    padding-bottom: 4rem;
+  }
+
+  .contact-section h3 {
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: #888888;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-item span {
+    display: block;
+    font-size: 0.7rem;
+    color: #777777;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .contact-item a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .contact-item a:hover {
+    color: #aaaaaa;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      padding: 1.5rem;
+    }
+
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .nav a {
+      margin-left: 0;
+      margin-right: 1.5rem;
+    }
+
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+
+    .about-section {
+      margin-top: 5rem;
+      padding-top: 3rem;
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .contact-links {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+</style>
