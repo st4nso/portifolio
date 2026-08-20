@@ -16,6 +16,8 @@ const editoriais = [
 
 const imagens = import.meta.glob('/src/assets/ensaios/**/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP}', { eager: true });
 
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const listaEditoriais = editoriais.map((item) => {
   const capa = Object.entries(imagens).find(([path]) => {
     const pathMinusculo = path.toLowerCase();
@@ -43,9 +45,9 @@ const listaEditoriais = editoriais.map((item) => {
 <body>
 
   <header class="header">
-    <h1 class="brand"><a href="/">LUCAS STANSO</a></h1>
+    <h1 class="brand"><a href={`${baseUrl}/`}>LUCAS STANSO</a></h1>
     <nav class="nav">
-      <a href="/">WORK</a>
+      <a href={`${baseUrl}/`}>WORK</a>
       <a href="#about">ABOUT</a>
       <a href="#contact">CONTACT</a>
     </nav>
@@ -55,7 +57,7 @@ const listaEditoriais = editoriais.map((item) => {
     <!-- GALERIA DE TRABALHOS -->
     <div class="gallery">
       {listaEditoriais.map((item) => (
-        <a href={`/ensaios/${item.slug}`} class="card">
+        <a href={`${baseUrl}/ensaios/${item.slug}`} class="card">
           <div class="image-box">
             {item.capaImg && (
               <Image src={item.capaImg} alt={item.title} loading="lazy" />
@@ -107,7 +109,7 @@ const listaEditoriais = editoriais.map((item) => {
         </div>
         <div class="contact-item">
           <span>EMAIL</span>
-          <a href="mailto:st4nso@gmail.com">st4nsos@gmail.com</a>
+          <a href="mailto:st4nsos@gmail.com">st4nsos@gmail.com</a>
         </div>
       </div>
     </section>

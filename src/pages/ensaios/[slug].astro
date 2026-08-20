@@ -151,6 +151,7 @@ export async function getStaticPaths() {
 }
 
 const { ensaio, fotos } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!DOCTYPE html>
@@ -166,8 +167,8 @@ const { ensaio, fotos } = Astro.props;
 <body>
 
   <header class="header">
-    <a href="/" class="back-link">← VOLTAR</a>
-    <h1 class="brand"><a href="/">LUCAS STANSO</a></h1>
+    <a href={`${baseUrl}/`} class="back-link">← VOLTAR</a>
+    <h1 class="brand"><a href={`${baseUrl}/`}>LUCAS STANSO</a></h1>
   </header>
 
   <main class="container">
