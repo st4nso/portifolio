@@ -50,6 +50,7 @@ const listaEditoriais = editoriais.map((item) => {
       <a href={`${baseUrl}/`}>WORK</a>
       <a href="#about">ABOUT</a>
       <a href="#contact">CONTACT</a>
+      <a href="#processos">PROCESSOS</a>
     </nav>
   </header>
 
@@ -100,20 +101,31 @@ const listaEditoriais = editoriais.map((item) => {
       </div>
     </section>
 
-   <!-- SEÇÃO CONTACT -->
-<section id="contact" class="contact-section">
-  <h3>CONTACT</h3>
-  <div class="contact-links">
-    <div class="contact-item">
-      <span>INSTAGRAM</span>
-      <a href="https://instagram.com/stanso__" target="_blank" rel="noopener noreferrer">@stanso__</a>
-    </div>
-    <div class="contact-item">
-      <span>EMAIL</span>
-      <a href="mailto:st4nso@gmail.com">st4nso@gmail.com</a>
-    </div>
-  </div>
-</section>
+    <!-- SEÇÃO CONTACT -->
+    <section id="contact" class="contact-section">
+      <h3>CONTACT</h3>
+      <div class="contact-links">
+        <div class="contact-item">
+          <span>INSTAGRAM</span>
+          <a href="https://instagram.com/stanso__" target="_blank" rel="noopener noreferrer">@stanso__</a>
+        </div>
+        <div class="contact-item">
+          <span>EMAIL</span>
+          <a href="mailto:st4nso@gmail.com">st4nso@gmail.com</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO CADERNO DE PROCESSOS (FINAL DO SITE) -->
+    <section id="processos" class="process-section">
+      <div class="video-container">
+        <video autoplay loop muted playsinline>
+          <source src={`${baseUrl}/videos/caderno-de-processos.mp4`} type="video/mp4" />
+          Seu navegador não suporta a exibição deste vídeo.
+        </video>
+        <p class="video-caption">CADERNO DE PROCESSOS — REGISTROS, EXPERIMENTAÇÕES E BASSES VISUAIS</p>
+      </div>
+    </section>
   </main>
 
 </body>
@@ -322,6 +334,38 @@ const listaEditoriais = editoriais.map((item) => {
     color: #aaaaaa;
   }
 
+  /* SEÇÃO CADERNO DE PROCESSOS (VÍDEO NO FINAL) */
+  .process-section {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid #2a2a2a;
+    padding-bottom: 4rem;
+  }
+
+  .video-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .video-container video {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video-caption {
+    font-size: 0.65rem;
+    color: #777777;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    margin-top: 0.8rem;
+    text-transform: uppercase;
+  }
+
   @media (max-width: 768px) {
     body {
       padding: 1.5rem;
@@ -356,6 +400,11 @@ const listaEditoriais = editoriais.map((item) => {
     .contact-links {
       flex-direction: column;
       gap: 1.5rem;
+    }
+
+    .process-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
     }
   }
 </style>
