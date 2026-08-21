@@ -74,7 +74,7 @@ const listaEditoriais = editoriais.map((item) => {
       </div>
     </div>
 
-    <!-- SEÇÃO CADERNO DE PROCESSOS (TELA INTEIRA ACIMA DO ABOUT) -->
+    <!-- SEÇÃO CADERNO DE PROCESSOS -->
     <section id="processos" class="process-section">
       <div class="video-container">
         <video autoplay loop muted playsinline>
@@ -100,7 +100,7 @@ const listaEditoriais = editoriais.map((item) => {
               Atuo em diferentes etapas do processo fotográfico, desde a produção e organização dos ensaios até a seleção e pós-produção das imagens. Sempre buscando unir técnicas com a direção visual em cada projeto e assim explorando as variadas possibilidades de expressão através da imagem.
             </p>
             <p>
-              Tenho especial interesse por trabalhos que envolvem moda e construção de narrativas visuais. Gosto de desenvolver imagens com atenção aos detalhes, buscando compreender a proposta de cada projeto para encontrar a melhor forma de traduzi-la visualmente.
+              Tenho especial interesse por trabalhos que envolvem moda e construção de narrativas visuais. Gosto de desenvolver imagens com atenção aos detalhes, buscando compreender a proposta de cada projeto e encontrar a melhor forma de traduzi-la visualmente.
             </p>
           </div>
 
@@ -108,7 +108,7 @@ const listaEditoriais = editoriais.map((item) => {
             <h3>SERVICES</h3>
             <ul>
               <li>Direção de Arte</li>
-              <li>Fotografia de Moda</li>
+              <li>Fotografia Editorial & Moda</li>
               <li>Retratos & Mídia Kit</li>
               <li>Cobertura Backstage</li>
             </ul>
@@ -152,7 +152,6 @@ const listaEditoriais = editoriais.map((item) => {
     background-color: #121212;
     color: #f0f0f0;
     font-family: 'Inter', sans-serif !important;
-    /* Alterado: paddings verticais aplicados no body, e laterais apenas no container */
     padding: 2.5rem 0; 
   }
 
@@ -162,7 +161,7 @@ const listaEditoriais = editoriais.map((item) => {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto 4rem auto;
-    padding: 0 2.5rem; /* Padding lateral */
+    padding: 0 2.5rem;
   }
 
   .brand a {
@@ -190,7 +189,7 @@ const listaEditoriais = editoriais.map((item) => {
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2.5rem; /* Padding lateral restaurado nos conteiners */
+    padding: 0 2.5rem;
   }
 
   /* GALERIA */
@@ -250,23 +249,25 @@ const listaEditoriais = editoriais.map((item) => {
     font-weight: 500;
   }
 
-  /* SEÇÃO CADERNO DE PROCESSOS (TELA INTEIRA) */
+  /* SEÇÃO CADERNO DE PROCESSOS */
   .process-section {
-    margin-top: 6rem; /* Espaçamento após a galeria */
+    margin-top: 6rem;
     width: 100%;
+    background-color: #121212;
   }
 
   .video-container {
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .video-container video {
     width: 100%;
     height: auto;
-    max-height: 90vh;
-    object-fit: cover; /* Faz o vídeo preencher todo o espaço horizontal sem distorcer */
+    max-height: 85vh; /* Evita que o video fique excessivamente alto no PC */
+    object-fit: contain; /* Garante que o vídeo aparece por inteiro sem cortes */
     display: block;
   }
 
@@ -288,7 +289,7 @@ const listaEditoriais = editoriais.map((item) => {
 
   /* SEÇÃO ABOUT */
   .about-section {
-    margin-top: 6rem; /* Espaço após o título do vídeo */
+    margin-top: 6rem;
     padding-top: 5rem;
     border-top: 1px solid #2a2a2a;
   }
@@ -405,6 +406,10 @@ const listaEditoriais = editoriais.map((item) => {
     
     .process-section {
       margin-top: 4rem;
+    }
+
+    .video-container video {
+      max-height: none; /* No celular ele ajusta proporcionalmente à largura */
     }
 
     .about-section {
