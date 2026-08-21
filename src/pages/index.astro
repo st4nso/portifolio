@@ -48,84 +48,89 @@ const listaEditoriais = editoriais.map((item) => {
     <h1 class="brand"><a href={`${baseUrl}/`}>LUCAS STANSO</a></h1>
     <nav class="nav">
       <a href={`${baseUrl}/`}>WORK</a>
+      <a href="#processos">PROCESSOS</a>
       <a href="#about">ABOUT</a>
       <a href="#contact">CONTACT</a>
-      <a href="#processos">PROCESSOS</a>
     </nav>
   </header>
 
-  <main class="container">
-    <!-- GALERIA DE TRABALHOS -->
-    <div class="gallery">
-      {listaEditoriais.map((item) => (
-        <a href={`${baseUrl}/ensaios/${item.slug}`} class="card">
-          <div class="image-box">
-            {item.capaImg && (
-              <Image src={item.capaImg} alt={item.title} loading="lazy" />
-            )}
-          </div>
-          <div class="card-info">
-            <h2>{item.title}</h2>
-            <span>{item.category}</span>
-          </div>
-        </a>
-      ))}
+  <main>
+    <div class="container">
+      <!-- GALERIA DE TRABALHOS -->
+      <div class="gallery">
+        {listaEditoriais.map((item) => (
+          <a href={`${baseUrl}/ensaios/${item.slug}`} class="card">
+            <div class="image-box">
+              {item.capaImg && (
+                <Image src={item.capaImg} alt={item.title} loading="lazy" />
+              )}
+            </div>
+            <div class="card-info">
+              <h2>{item.title}</h2>
+              <span>{item.category}</span>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
 
-    <!-- SEÇÃO ABOUT -->
-    <section id="about" class="about-section">
-      <div class="about-grid">
-        <div class="about-bio">
-          <h2>ABOUT</h2>
-          <p>
-            Sou Lucas dos Santos, fotógrafo e designer de moda, com interesse em direção de arte e criação de imagem de moda.
-          </p>
-          <p>
-            Atuo em diferentes etapas do processo fotográfico, desde a produção e organização dos ensaios até a seleção e pós-produção das imagens. Sempre buscando unir técnicas com a direção visual em cada projeto e assim explorando as variadas possibilidades de expressão através da imagem.
-          </p>
-          <p>
-            Tenho especial interesse por trabalhos que envolvem moda e construção de narrativas visuais. Gosto de desenvolver imagens com atenção aos detalhes, buscando compreender a proposta de cada projeto para encontrar a melhor forma de traduzi-la visualmente.
-          </p>
-        </div>
-
-        <div class="about-services">
-          <h3>SERVICES</h3>
-          <ul>
-            <li>Direção de Arte</li>
-            <li>Fotografia de Moda</li>
-            <li>Retratos & Mídia Kit</li>
-            <li>Cobertura Backstage</li>
-            <li>Retouch fotográfico</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEÇÃO CONTACT -->
-    <section id="contact" class="contact-section">
-      <h3>CONTACT</h3>
-      <div class="contact-links">
-        <div class="contact-item">
-          <span>INSTAGRAM</span>
-          <a href="https://instagram.com/stanso__" target="_blank" rel="noopener noreferrer">@stanso__</a>
-        </div>
-        <div class="contact-item">
-          <span>EMAIL</span>
-          <a href="mailto:st4nso@gmail.com">st4nso@gmail.com</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEÇÃO CADERNO DE PROCESSOS (FINAL DO SITE) -->
+    <!-- SEÇÃO CADERNO DE PROCESSOS (TELA INTEIRA ACIMA DO ABOUT) -->
     <section id="processos" class="process-section">
       <div class="video-container">
         <video autoplay loop muted playsinline>
           <source src={`${baseUrl}/videos/caderno-de-processos.mp4`} type="video/mp4" />
           Seu navegador não suporta a exibição deste vídeo.
         </video>
-        <p class="video-caption">CADERNO DE PROCESSOS — REGISTROS, EXPERIMENTAÇÕES E BASSES VISUAIS</p>
+        <div class="caption-wrapper">
+          <p class="video-caption">CADERNO DE PROCESSOS — REGISTROS, EXPERIMENTAÇÕES E BASSES VISUAIS</p>
+        </div>
       </div>
     </section>
+
+    <div class="container">
+      <!-- SEÇÃO ABOUT -->
+      <section id="about" class="about-section">
+        <div class="about-grid">
+          <div class="about-bio">
+            <h2>ABOUT</h2>
+            <p>
+              Sou Lucas dos Santos, fotógrafo e designer de moda, com interesse em direção de arte e criação de imagem de moda.
+            </p>
+            <p>
+              Atuo em diferentes etapas do processo fotográfico, desde a produção e organização dos ensaios até a seleção e pós-produção das imagens. Sempre buscando unir técnicas com a direção visual em cada projeto e assim explorando as variadas possibilidades de expressão através da imagem.
+            </p>
+            <p>
+              Tenho especial interesse por trabalhos que envolvem moda e construção de narrativas visuais. Gosto de desenvolver imagens com atenção aos detalhes, buscando compreender a proposta de cada projeto para encontrar a melhor forma de traduzi-la visualmente.
+            </p>
+          </div>
+
+          <div class="about-services">
+            <h3>SERVICES</h3>
+            <ul>
+              <li>Direção de Arte</li>
+              <li>Fotografia de Moda</li>
+              <li>Retratos & Mídia Kit</li>
+              <li>Cobertura Backstage</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO CONTACT -->
+      <section id="contact" class="contact-section">
+        <h3>CONTACT</h3>
+        <div class="contact-links">
+          <div class="contact-item">
+            <span>INSTAGRAM</span>
+            <a href="https://instagram.com/stanso__" target="_blank" rel="noopener noreferrer">@stanso__</a>
+          </div>
+          <div class="contact-item">
+            <span>EMAIL</span>
+            <a href="mailto:st4nso@gmail.com">st4nso@gmail.com</a>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
 </body>
@@ -147,7 +152,8 @@ const listaEditoriais = editoriais.map((item) => {
     background-color: #121212;
     color: #f0f0f0;
     font-family: 'Inter', sans-serif !important;
-    padding: 2.5rem;
+    /* Alterado: paddings verticais aplicados no body, e laterais apenas no container */
+    padding: 2.5rem 0; 
   }
 
   .header {
@@ -156,6 +162,7 @@ const listaEditoriais = editoriais.map((item) => {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto 4rem auto;
+    padding: 0 2.5rem; /* Padding lateral */
   }
 
   .brand a {
@@ -183,6 +190,7 @@ const listaEditoriais = editoriais.map((item) => {
   .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2.5rem; /* Padding lateral restaurado nos conteiners */
   }
 
   /* GALERIA */
@@ -242,9 +250,45 @@ const listaEditoriais = editoriais.map((item) => {
     font-weight: 500;
   }
 
+  /* SEÇÃO CADERNO DE PROCESSOS (TELA INTEIRA) */
+  .process-section {
+    margin-top: 6rem; /* Espaçamento após a galeria */
+    width: 100%;
+  }
+
+  .video-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .video-container video {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    object-fit: cover; /* Faz o vídeo preencher todo o espaço horizontal sem distorcer */
+    display: block;
+  }
+
+  .caption-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    width: 100%;
+  }
+
+  .video-caption {
+    font-size: 0.65rem;
+    color: #777777;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    margin-top: 1rem;
+    text-transform: uppercase;
+  }
+
   /* SEÇÃO ABOUT */
   .about-section {
-    margin-top: 8rem;
+    margin-top: 6rem; /* Espaço após o título do vídeo */
     padding-top: 5rem;
     border-top: 1px solid #2a2a2a;
   }
@@ -334,41 +378,13 @@ const listaEditoriais = editoriais.map((item) => {
     color: #aaaaaa;
   }
 
-  /* SEÇÃO CADERNO DE PROCESSOS (VÍDEO NO FINAL) */
-  .process-section {
-    margin-top: 4rem;
-    padding-top: 3rem;
-    border-top: 1px solid #2a2a2a;
-    padding-bottom: 4rem;
-  }
-
-  .video-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .video-container video {
-    width: 100%;
-    height: auto;
-    max-height: 80vh;
-    object-fit: cover;
-    display: block;
-  }
-
-  .video-caption {
-    font-size: 0.65rem;
-    color: #777777;
-    letter-spacing: 0.15em;
-    font-weight: 500;
-    margin-top: 0.8rem;
-    text-transform: uppercase;
-  }
-
   @media (max-width: 768px) {
     body {
-      padding: 1.5rem;
+      padding: 1.5rem 0;
+    }
+
+    .header, .container, .caption-wrapper {
+      padding: 0 1.5rem;
     }
 
     .header {
@@ -386,9 +402,13 @@ const listaEditoriais = editoriais.map((item) => {
     .gallery {
       grid-template-columns: 1fr;
     }
+    
+    .process-section {
+      margin-top: 4rem;
+    }
 
     .about-section {
-      margin-top: 5rem;
+      margin-top: 4rem;
       padding-top: 3rem;
     }
 
@@ -400,11 +420,6 @@ const listaEditoriais = editoriais.map((item) => {
     .contact-links {
       flex-direction: column;
       gap: 1.5rem;
-    }
-
-    .process-section {
-      margin-top: 3rem;
-      padding-top: 2rem;
     }
   }
 </style>
